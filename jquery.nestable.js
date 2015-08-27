@@ -289,12 +289,14 @@
         {
             var el = this.dragEl.children(this.options.itemNodeName).first();
             el[0].parentNode.removeChild(el[0]);
+
             this.placeEl.replaceWith(el);
 
             this.dragEl.remove();
-            this.el.trigger('change');
+            this.el.trigger('change', [el]);
+			
             if (this.hasNewRoot) {
-                this.dragRootEl.trigger('change');
+                this.dragRootEl.trigger('change', [el]);
             }
             this.reset();
         },
